@@ -23,6 +23,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+var mongoose = require('mongoose');
+var Videojuego = require('./models/videojuegos');
+
+mongoose.connect('mongodb+srv://administrador:fesaragon@cluster0-pqaaf.gcp.mongodb.net/ProyectoSI?retryWrites=true&w=majority', {
+    useNewUrlParser: true
+  }).then(() => {
+    console.log('Conectado a MongoDB')
+  })
+  .catch(err => console.log(err));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
