@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <header>
+        <h1>Agregar Videojuego</h1>
+        <p>Por favor ingrese los datos del videojuego que quiere dar de alta</p>
+    </header>
+
+    <main>
+
+        <form action="/api/videojuegos/" method="POST">
+            <p>
+                <label for="nombre">Nombre del videojuego </label>
+                <input type="text" name="nombre">
+            </p>
+            <br>
+            <p>
+                <label for="compania">Compañía del videojuego</label>
+                <input type="text" name="compania">
+            </p>
+            <br>
+            <p>
+                <label for="clasificacion">Clasificación del Videojuego</label>
+                <input type="text" name="clasificacion">
+            </p>
+            <br>
+            <p>
+                <label for="tipoJuego">Tipo de Videojuego</label>
+                <input type="text" name="tipoJuego">
+            </p>
+            <br>
+            <p>
+                <label for="numJugadores">Numero de jugadores</label>
+                <input type="text" name="numJugadores">
+            </p>
+            <br>
+            <p>
+                <label for="precio">Precio del Videojuego</label>
+                <input type="text" name="precio">
+            </p>
+            <input type="submit" value="Enviar">
+        </form>
+    </main>
+</body>
+</html>

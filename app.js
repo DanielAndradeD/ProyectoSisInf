@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/videojuegos', usersRouter);
 
 var mongoose = require('mongoose');
 var Videojuego = require('./models/videojuegos');
