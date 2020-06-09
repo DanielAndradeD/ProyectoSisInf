@@ -72,8 +72,8 @@ request.delete('http://localhost:3000/api/videojuegos/'+ myId, function(err,resp
       precio: datos.precio
 });
     }
-    	res.status(200).json();
-      console.log(data.id);
+    //	res.status(200).json();
+      //console.log(data.id);
       }
   });
 });
