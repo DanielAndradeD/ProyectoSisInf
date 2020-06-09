@@ -11,15 +11,10 @@ router.get('/',(req, res, next)=>{
   });
 });
 
-<<<<<<< HEAD
-router.get('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOne({'_id':req.params.videojuegoId},(err, datos)=>{
-=======
 router.get('/:videojuegoID', function(req, res, next) {
   Videojuego.findOne({
     'nombre': req.params.videojuegoID
   }, function(err, datos) {
->>>>>>> e0f2a3eae2e86106a841e3619fa53ec81564b70d
     if (datos == null) {
       res.status(404).json({
         mensaje: "No existe"
@@ -27,11 +22,8 @@ router.get('/:videojuegoID', function(req, res, next) {
     } else {
       res.status(200).json(datos);
     }
-
   });
-  //res.json(req.params.userId);
 });
-
 
 router.post('/',(req, res, next)=>{
   var videojuego=Videojuego({
@@ -60,7 +52,7 @@ router.delete('/',(req, res, next)=>{
 });
 
 router.delete('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndDelete({'_id':req.params.videojuegoId},(err, datos)=>{
+  Videojuego.findOneAndDelete({'nombre':req.params.videojuegoId},(err, datos)=>{
     if (err) {
       res.status(404).json({"mensaje":"Elemento no encontrado"});
     } else {
