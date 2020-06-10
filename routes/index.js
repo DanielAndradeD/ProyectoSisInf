@@ -78,4 +78,31 @@ request.delete('http://localhost:3000/api/videojuegos/'+ myId, function(err,resp
   });
 });
 
+router.get('/juegoModificado', function(req, res, next) {
+var myId = req.query.nombre;
+request('http://localhost:3000/api/videojuegos/'+ myId, function(err,response,data){
+  if(err){
+    res.status(404).json({
+        mensaje: "No existe"
+      });
+  }else {
+     var datos=JSON.parse(data);
+     if(datos==null){
+      res.status(404).json({
+        mensaje: "No existe"
+      });
+    } else {
+	    res.render('modificado',{
+      nombre:datos.nombre,
+      compania:datos.compania ,
+      clasificacion:datos.clasificacion,
+      tipoJuego:datos.tipoJuego ,
+      numJugadores: datos.numJugadores,
+      precio: datos.precio
+});
+    }
+    }
+  });
+});
+
 module.exports = router;

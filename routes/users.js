@@ -66,7 +66,7 @@ router.patch('/',(req, res, next)=>{
 });
 
 router.patch('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndUpdate({'_id':req.params.videojuegoId}, {
+  Videojuego.findOneAndUpdate({'nombre':req.params.videojuegoID}, {
     nombre: req.body.nombre,
     compania: req.body.compania,
     clasificacion: req.body.clasificacion,
