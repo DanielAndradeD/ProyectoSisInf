@@ -66,13 +66,14 @@ router.patch('/',(req, res, next)=>{
 });
 
 router.patch('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndUpdate({'nombre':req.params.videojuegoID}, {
+  Videojuego.findOneAndUpdate({'nombre':req.params.videojuegoId}, {
     nombre: req.body.nombre,
     compania: req.body.compania,
     clasificacion: req.body.clasificacion,
     tipoJuego: req.body.tipoJuego,
     numJugadores: req.body.numJugadores,
     precio: req.body.precio
+
   },(err, datos)=>{
     if (err) {
       res.status(404).json({"mensaje":"Elemento no encontrado"});
@@ -81,5 +82,6 @@ router.patch('/:videojuegoId',(req, res, next)=>{
     }
   });
 });
+
 
 module.exports = router;
