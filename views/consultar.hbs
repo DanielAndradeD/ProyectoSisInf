@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 </head>
 <body>
-    <header>
-        <h1>Buscar Videojuego</h1>
-        <p>Por favor, ingrese el nombre del videojuego que quiere Buscar</p>
+  <div class="headd">
+    <section id="menu">
+      <ul>
+        <a href="/">Inicio</a>
+        <a href="/consultar">Consultar</a>
+        <a href="/api/videojuegos">Lista</a>
+        <a href="/modificar">Modificar</a>
+        <a href="/agregar">Agregar</a>
+        <a href="/eliminar">Eliminar</a>
+      </ul>
     </header>
-    <main>
+  </div>
+
+  <div id="bod-cons">
+    <div class="consultar">Por favor,<br><br>Ingrese el nombre del videojuego que quiere buscar</div>
         <form action="/buscar" method="GET">
-            <label for="nombre">nombre del videojuego</label>
-            <input type="text" name="nombre" >
-            
+          <div class="lablbuscar">
+            <img src="https://cdn.bulbagarden.net/upload/f/f5/Detective_Pikachu_artwork_2.png" width=7% height=7%>
+            <input type="text" name="nombre">
             <input type="submit"  value="consultar">
-        </form>
-    </main>
+          </div>
+      </form>
+  </div>
+
+
 </body>
 </html>

@@ -6,15 +6,27 @@
     <title></title>
   </head>
   <body>
-    <header>
-      <h1>Eliminar Videojuego</h1>
-      <p>Por favor, ingrese el nombre del videojuego que quiere eliminar</p>
-    </header>
-    <main>
+    <div class="headd">
+      <section id="menu">
+        <ul>
+          <a href="/">Inicio</a>
+          <a href="/consultar">Consultar</a>
+          <a href="/api/videojuegos">Lista</a>
+          <a href="/modificar">Modificar</a>
+          <a href="/agregar">Agregar</a>
+          <a href="/eliminar">Eliminar</a>
+        </ul>
+      </header>
+    </div>
+
+    <div id="bod-cons">
+      <div class="consultar">Por favor,<br><br>Ingrese el nombre del videojuego que quiere eliminar</div>
       <form action="/eliminarJuego" method="delete">
+        <div class="lablbuscar">
           <input type="text" name="nombre" class='browser-default'>
           <input type="submit"  value="Eliminar">
+        </div>
       </form>
-    </main>
+    </div>
   </body>
 </html>
