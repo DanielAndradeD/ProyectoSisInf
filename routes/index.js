@@ -20,7 +20,7 @@ router.get('/eliminar', function(req, res, next) {
 
 router.get('/buscar', function(req, res, next) {
   var myId = req.query.nombre;
-  request('http://localhost:3000/api/videojuegos/' + myId, function(err,response,data){
+  request('https://proyectoapirestsisinf.herokuapp.com/api/videojuegos/' + myId, function(err,response,data){
     if(err){
       res.status(404).json({
           mensaje: "No existe"
@@ -47,7 +47,7 @@ router.get('/buscar', function(req, res, next) {
 
 router.get('/eliminarJuego', function(req, res, next) {
   var myId = req.query.nombre;
-  request.delete('http://localhost:3000/api/videojuegos/'+ myId, function(err,response,data){
+  request.delete('https://proyectoapirestsisinf.herokuapp.com/api/videojuegos/'+ myId, function(err,response,data){
     if(err){
       res.status(404).json({
           mensaje: "No existe"
