@@ -107,7 +107,7 @@ router.post('/guardar', function(req, res, next) {
   });
   videojuego.save((err,data)=>{
     if(err) res.send("Error al guardar");
-    else res.render('profile');
+    else res.redirect('/catalogo')
   })
 });
 
