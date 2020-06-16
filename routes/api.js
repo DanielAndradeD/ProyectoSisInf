@@ -13,7 +13,7 @@ router.get('/',(req, res, next)=>{
 
 router.get('/:videojuegoID', function(req, res, next) {
   Videojuego.findOne({
-    _id: req.params.videojuegoID
+    'nombre': req.params.videojuegoID
   }, function(err, datos) {
     if (datos == null) {
       res.status(404).json({
@@ -53,7 +53,7 @@ router.delete('/',(req, res, next)=>{
 });
 
 router.delete('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndDelete({_id:req.params.videojuegoId},(err, datos)=>{
+  Videojuego.findOneAndDelete({nombre:req.params.videojuegoId},(err, datos)=>{
     if (err) {
       res.status(404).json({mensaje:"Elemento no encontrado"});
     } else {
@@ -67,7 +67,7 @@ router.patch('/',(req, res, next)=>{
 });
 
 router.patch('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndUpdate({_id:req.params.videojuegoId}, {
+  Videojuego.findOneAndUpdate({nombre:req.params.videojuegoId}, {
     nombre: req.body.nombre,
     compania: req.body.compania,
     clasificacion: req.body.clasificacion,

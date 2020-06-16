@@ -11,6 +11,70 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/consultar', function(req, res, next) {
+  res.render('consultar', { title: 'Consulta de Videojuego' });
+});
+
+router.get('/eliminar', function(req, res, next) {
+  res.render('eliminar', { title: 'Eliminar Videojuego' });
+});
+
+router.get('/buscar', function(req, res, next) {
+  var myId = req.query.nombre;
+  request('http://localhost:3000/api/videojuegos/' + myId, function(err,response,data){
+    if(err){
+      res.status(404).json({
+          mensaje: "No existe"
+        });
+    }else {
+        var datos=JSON.parse(data);
+        if (datos.nombre==undefined){
+          res.status(404).json({
+          mensaje: "No existe"
+        });
+        }else{
+        res.render('profile',{
+          nombre:datos.nombre,
+          compania:datos.compania ,
+          clasificacion:datos.clasificacion,
+          tipoJuego:datos.tipoJuego ,
+          numJugadores: datos.numJugadores,
+          precio: datos.precio,
+          imagen: datos.imagen});
+      }
+    }
+  });
+});
+
+router.get('/eliminarJuego', function(req, res, next) {
+  var myId = req.query.nombre;
+  request.delete('http://localhost:3000/api/videojuegos/'+ myId, function(err,response,data){
+    if(err){
+      res.status(404).json({
+          mensaje: "No existe"
+        });
+    }else {
+       var datos=JSON.parse(data);
+       if(datos==null){
+        res.status(404).json({
+          mensaje: "No existe"
+        });
+      } else {
+        res.render('juegoEliminado',{
+        nombre:datos.nombre,
+        compania:datos.compania ,
+        clasificacion:datos.clasificacion,
+        tipoJuego:datos.tipoJuego ,
+        numJugadores: datos.numJugadores,
+        precio: datos.precio,
+        imagen: datos.imagen
+  });
+      }
+        }
+    });
+  });
+  
+
+router.get('/catalogo', function(req, res, next) {
   Videojuego.find({},(err,data)=>{
     if (err) {
       res.send("Error: " + err);
@@ -43,7 +107,7 @@ router.post('/guardar', function(req, res, next) {
   });
   videojuego.save((err,data)=>{
     if(err) res.send("Error al guardar");
-    else res.redirect('/consultar');
+    else res.render('profile');
   })
 });
 
