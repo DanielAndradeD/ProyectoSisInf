@@ -1,12 +1,14 @@
+<title>Catalogo</title>
 <div class="row">
   {{#each videojuegos}}
-  <div class="col col -20">
-    <div class="card" style="width:400px">
+  <div class="col-md-3">
+    <div class="card" style="width:315px">
       <div class="card-body">
-        <h3 class="card-title">{{nombre}}</h3>
+        <h5 class="card-title">
+          <a href="/profile/{{_id}}">{{nombre}} <a/>
+        </h5>
       </div>
       <img class="card-img-bottom" src="{{imagen}}" alt="Card image" style="width:100%">
-      <a></a>
     </div>
   </div>
   {{/each}}

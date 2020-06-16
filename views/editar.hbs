@@ -1,0 +1,52 @@
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <h3>Editar Juego</h3>
+    </div>
+    <div class="card-body">
+      <form action="/editado/{{_id}}?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+          <label>Nombre: </label>
+          <br>
+          <input type="text" name="Nombre" class="from-control" placeholder="Nombre" value={{nombre}}>
+        </div>
+        <div class="form-group">
+          <label>Compañia: </label>
+          <br>
+          <input type="text" name="Compañia" class="from-control" placeholder="Compañia" value={{compania}}>
+        </div>
+        <div class="form-group">
+          <label>Clasificación: </label>
+          <br>
+          <input type="text" name="Clasificación" class="from-control" placeholder="Clasificación" value={{clasificacion}}>
+        </div>
+        <div class="form-group">
+          <label>Tipo: </label>
+          <br>
+          <input type="text" name="Tipo" class="from-control" placeholder="Tipo de Juego" value={{tipoJuego}}>
+        </div>
+        <div class="form-group">
+          <label>Jugadores: </label>
+          <br>
+          <input type="text" name="Jugadores" class="from-control" placeholder="Número de Jugadores" value={{numJugadores}}>
+        </div>
+        <div class="form-group">
+          <label>Precio: </label>
+          <br>
+          <input type="text" name="Precio" class="from-control" placeholder="Precio" value={{precio}}>
+        </div>
+        <div class="form-group">
+          <label>Imagen: </label>
+          <br>
+          <input type="text" name="Imagen" class="from-control" placeholder="URL Imagen" value={{imagen}}>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
