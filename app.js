@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 //aqui va la ruta de mongo
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/videojuegos', usersRouter);
+app.use('/api/videojuegos', apiRouter);
 
 var mongoose = require('mongoose');
 var Videojuego = require('./models/videojuegos');

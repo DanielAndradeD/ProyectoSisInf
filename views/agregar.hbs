@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+  <div class="headd">
+    <section id="menu">
+      <ul>
+        <a href="/">Inicio</a>
+        <a href="/consultar">Consultar</a>
+        <a href="/api/videojuegos">Lista</a>
+        <a href="/modificar">Modificar</a>
+        <a href="/agregar">Agregar</a>
+        <a href="/eliminar">Eliminar</a>
+      </ul>
+    </header>
+  </div>
+
+  <div class="bod">
+
+  </div>
+    <header>
+        <div>
+        <h2>Por favor ingrese los datos del videojuego que quiere dar de alta</h2>
+        </div>
+    </header>
+
+    <main>
+
+        <form action="/guardar" method="POST">
+          <br>
+          <h3>
+          <div class="form-group">
+            <label for="nombre">Videojuego:</label>
+            <input type="text" class="form-control" id="nombre"
+                    placeholder="Nombre del Viedojuego" name="nombre">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="compania">Compañia:</label>
+            <input type="text" class="form-control" id="compania"
+                    placeholder="Compañia" name="compania">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="clasificacion">Clasificación:</label>
+            <input type="text" class="form-control" id="clasificacion"
+                    placeholder="Clasificación del Viedojuego" name="clasificacion">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="tipoJuego">Tipo:</label>
+            <input type="text" class="form-control" id="tipoJuego"
+                    placeholder="Tipo de juego" name="tipoJuego">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="numJugadores">Número de jugadores:</label>
+            <input type="text" class="form-control" id="numJugadores"
+                    placeholder="Número de jugadores" name="numJugadores">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="text" class="form-control" id="precio"
+                    placeholder="Precio del juego" name="precio">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="imagen">Imagen:</label>
+            <input type="text" class="form-control" id="imagen"
+                    placeholder="Url de la imagen" name="imagen">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </h3>
+        </form>
+    </main>
+</body>
+</html>

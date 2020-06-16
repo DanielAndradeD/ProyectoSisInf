@@ -6,14 +6,14 @@ var Videojuego = require('../models/videojuegos');
 
 router.get('/',(req, res, next)=>{
   Videojuego.find({},(err, datos)=>{
-    if (err)res.status(400).json({"mensaje":"Error, no se encontro elemento"})
+    if (err)res.status(400).json({mensaje:"Error, no se encontro elemento"})
     res.status(200).json(datos);
   });
 });
 
 router.get('/:videojuegoID', function(req, res, next) {
   Videojuego.findOne({
-    'nombre': req.params.videojuegoID
+    _id: req.params.videojuegoID
   }, function(err, datos) {
     if (datos == null) {
       res.status(404).json({
@@ -32,11 +32,12 @@ router.post('/',(req, res, next)=>{
     clasificacion: req.body.clasificacion,
     tipoJuego: req.body.tipoJuego,
     numJugadores: req.body.numJugadores,
-    precio: req.body.precio
+    precio: req.body.precio,
+    imagen: req.body.imagen
   });
   videojuego.save((err,datos)=>{
     if (err) {
-      res.status(404).json({"mensaje":"Error al guardar"});
+      res.status(404).json({mensaje:"Error al guardar"});
     } else {
       res.status(201).json(datos);
     }
@@ -44,17 +45,17 @@ router.post('/',(req, res, next)=>{
 });
 
 router.post('/:videojuegoId',(req, res, next)=>{
-  res.status(404).json({"mensaje":"Operacion no permitida"});
+  res.status(404).json({mensaje:"Operacion no permitida"});
 });
 
 router.delete('/',(req, res, next)=>{
-  res.status(405).json({"mensaje":"Operacion no permitida"});
+  res.status(405).json({mensaje:"Operacion no permitida"});
 });
 
 router.delete('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndDelete({'nombre':req.params.videojuegoId},(err, datos)=>{
+  Videojuego.findOneAndDelete({_id:req.params.videojuegoId},(err, datos)=>{
     if (err) {
-      res.status(404).json({"mensaje":"Elemento no encontrado"});
+      res.status(404).json({mensaje:"Elemento no encontrado"});
     } else {
       res.status(200).json(datos);
     }
@@ -62,21 +63,21 @@ router.delete('/:videojuegoId',(req, res, next)=>{
 });
 
 router.patch('/',(req, res, next)=>{
-  res.status(405).json({"mensaje":"Operacion no permitida"});
+  res.status(405).json({mensaje:"Operacion no permitida"});
 });
 
 router.patch('/:videojuegoId',(req, res, next)=>{
-  Videojuego.findOneAndUpdate({'nombre':req.params.videojuegoId}, {
+  Videojuego.findOneAndUpdate({_id:req.params.videojuegoId}, {
     nombre: req.body.nombre,
     compania: req.body.compania,
     clasificacion: req.body.clasificacion,
     tipoJuego: req.body.tipoJuego,
     numJugadores: req.body.numJugadores,
-    precio: req.body.precio
-
+    precio: req.body.precio,
+    imagen: req.body.imagen
   },(err, datos)=>{
     if (err) {
-      res.status(404).json({"mensaje":"Elemento no encontrado"});
+      res.status(404).json({mensaje:"Elemento no encontrado"});
     } else {
       res.status(200).json(datos);
     }

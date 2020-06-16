@@ -7,7 +7,8 @@ var VideojuegoSchema =  Schema({
   clasificacion: String,
   tipoJuego: String,
   numJugadores: Number,
-  precio: Number
+  precio: Number,
+  imagen: String
 });
 
 

@@ -2,107 +2,49 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+var mongoose = require('mongoose');
+var Videojuego = require('../models/videojuegos');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Videojuegos' });
 });
 
 router.get('/consultar', function(req, res, next) {
-  res.render('consultar', { title: 'Consulta de Videojuego' });
+  Videojuego.find({},(err,data)=>{
+    if (err) {
+      res.send("Error: " + err);
+    } else {
+      res.render('vista', {videojuegos:data})
+    }
+  });
 });
 
 router.get('/agregar', function(req, res, next) {
-  res.render('insertar', { title: 'Alta de Videojuegos' });
+  res.render('agregar', { title: 'Añadir Videojuego' });
 });
 
-router.get('/eliminar', function(req, res, next) {
-  res.render('eliminar', { title: 'Eliminar Videojuego' });
-});
-
-router.get('/modificar', function(req, res, next) {
-  res.render('modificar', { title: 'Modificar Videojuego' });
-});
-
-router.get('/buscar', function(req, res, next) {
-  var myId = req.query.nombre;
-  request('http://localhost:3000/api/videojuegos/' + myId, function(err,response,data){
-    if(err){
-      res.status(404).json({
-          mensaje: "No existe"
-        });
-    }else {
-        var datos=JSON.parse(data);
-        if (datos.nombre==undefined){
-          res.status(404).json({
-          mensaje: "No existe"
-        });
-        }else{
-        res.render('mostrar',{
-          nombre:datos.nombre,
-          compania:datos.compania ,
-          clasificacion:datos.clasificacion,
-          tipoJuego:datos.tipoJuego ,
-          numJugadores: datos.numJugadores,
-          precio: datos.precio});
-      }
-    }
+router.post('/guardar', function(req, res, next) {
+  var nombre = req.body.nombre;
+  var compania = req.body.compania;
+  var clasificacion = req.body.clasificacion;
+  var tipoJuego = req.body.tipoJuego;
+  var numJugadores = req.body.numJugadores;
+  var precio = req.body.precio;
+  var imagen = req.body.imagen;
+  var videojuego=Videojuego({
+    nombre: nombre,
+    compania: compania,
+    clasificacion: clasificacion,
+    tipoJuego: tipoJuego,
+    numJugadores: numJugadores,
+    precio: precio,
+    imagen: imagen
   });
-});
-
-router.get('/eliminarJuego', function(req, res, next) {
-var myId = req.query.nombre;
-request.delete('http://localhost:3000/api/videojuegos/'+ myId, function(err,response,data){
-  if(err){
-    res.status(404).json({
-        mensaje: "No existe"
-      });
-  }else {
-     var datos=JSON.parse(data);
-     if(datos==null){
-      res.status(404).json({
-        mensaje: "No existe"
-      });
-    } else {
-	    res.render('juegoEliminado',{
-      nombre:datos.nombre,
-      compania:datos.compania ,
-      clasificacion:datos.clasificacion,
-      tipoJuego:datos.tipoJuego ,
-      numJugadores: datos.numJugadores,
-      precio: datos.precio
-});
-    }
-    //	res.status(200).json();
-      //console.log(data.id);
-      }
-  });
-});
-
-router.get('/juegoModificado', function(req, res, next) {
-var myId = req.query.nombre;
-request('http://localhost:3000/api/videojuegos/'+ myId, function(err,response,data){
-  if(err){
-    res.status(404).json({
-        mensaje: "No existe"
-      });
-  }else {
-     var datos=JSON.parse(data);
-     if(datos==null){
-      res.status(404).json({
-        mensaje: "No existe"
-      });
-    } else {
-	    res.render('modificado',{
-      nombre:datos.nombre,
-      compania:datos.compania ,
-      clasificacion:datos.clasificacion,
-      tipoJuego:datos.tipoJuego ,
-      numJugadores: datos.numJugadores,
-      precio: datos.precio
-});
-    }
-    }
-  });
+  videojuego.save((err,data)=>{
+    if(err) res.send("Error al guardar");
+    else res.render('index');
+  })
 });
 
 module.exports = router;
