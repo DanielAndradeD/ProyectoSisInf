@@ -2,3 +2,4 @@
 # Hernández Trujillo Sandra Azalia
 # Andrade Duran Juan Daniel
 # Cruz Hernández Alejandro
+# Miranda Hernández Cristóbal
